@@ -1,2 +1,3 @@
 sinew             Sehne
 chime              Glocke
+abhore             hassen
