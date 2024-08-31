@@ -2,3 +2,4 @@ sinew:Sehne
 chime:Glocke
 to abhor sth.:hassen
 to mete out:verteilen
+to elucidate:erläutern
