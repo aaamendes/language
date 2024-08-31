@@ -1,1 +1,2 @@
 sinew             Sehne
+chime              Glocke
