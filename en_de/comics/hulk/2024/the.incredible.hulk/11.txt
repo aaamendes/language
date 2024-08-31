@@ -1,1 +1,1 @@
-consort         Gemahl;Gemahlin
+consort:Gemahl;Gemahlin
