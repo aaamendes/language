@@ -29,6 +29,7 @@ my @voc_s_arr = map {
 } sort { $a cmp $b } keys %vocabulary;
 
 # print Dumper \@voc_s_arr;
+} sort keys %vocabulary;
 
 while (1) {
     my $r = int rand scalar @voc_s_arr-1;
