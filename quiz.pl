@@ -32,7 +32,6 @@ my @voc_s_arr = map {
 } sort keys %vocabulary;
 
 while (1) {
-    my $r = int rand scalar @voc_s_arr-1;
 
     say "Q: German translation for " . $voc_s_arr[$r][0] . "?";
     print "A: ";
