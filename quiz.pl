@@ -26,28 +26,46 @@ foreach my $file (@files) {
 
 my @voc_s_arr = map { 
     [ $_, $vocabulary{$_} ]
-} sort { $a cmp $b } keys %vocabulary;
-
-# print Dumper \@voc_s_arr;
 } sort keys %vocabulary;
 
 while (1) {
-
-    say "Q: German translation for " . $voc_s_arr[$r][0] . "?";
-    print "A: ";
+    my $r = ask();
     chomp (my $answer = <STDIN>);
-    
-    if ($answer eq $voc_s_arr[$r][1]{translation}) {
+
+    if (check_answer($answer, $voc_s_arr[$r])) {
+        print color('bold white');
         say "Correct!";
-        select(undef, undef, undef, .5);
     }
     else {
         print color('bold red');
-        say "A: ". $voc_s_arr[$r][1]{translation};
-        print color('reset');
-        select(undef, undef, undef, 2);
+        say "A: " . $voc_s_arr[$r][1]{translation};
+        print color('bold magenta');
+        say "F: " . $voc_s_arr[$r][1]{file};
     }
+
+    print color('reset');
+    <STDIN>;
     system("clear");
+}
+
+sub ask {
+    my $r = int rand scalar @voc_s_arr;
+
+    print "Q: German translation for ";
+    print color('bold green');
+    print $voc_s_arr[$r][0];
+    print color('reset');
+    say "?";
+    print "A: ";
+
+    $r;
+}
+
+sub check_answer {
+    my ($answer, $voc_object) = @_;
+    my @possible_answers = split ";" => $$voc_object[1]{translation};
+
+    grep { /^$answer$/i } @possible_answers;
 }
 
 __END__
