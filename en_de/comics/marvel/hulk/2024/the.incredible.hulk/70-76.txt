@@ -11,3 +11,5 @@ to relish sth.:genießen
 relish:Genuss
 brawl:Schlägerei
 perpetrator:Täter
+implacable:unerbittlich
+chestnut:Kastanie
