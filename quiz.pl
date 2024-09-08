@@ -8,8 +8,15 @@ use Data::Dumper;
 
 my %vocabulary;
 
+my $args = (join $", @ARGV) || ".";
+my @fdirs = split $", $args;
+my @files;
+
 # TMTOWTDI
-my @files = map { &{ sub { s/\n//; +$_; } } } `find . -type f -name *txt`;
+foreach my $fdir (@fdirs) {
+    my @temp = map { &{ sub { s/\n//; +$_; } } } `find $fdir -type f -name *txt`;
+    push @files, @temp;
+}
 
 foreach my $file (@files) {
     open F, "<", $file or die $!;
