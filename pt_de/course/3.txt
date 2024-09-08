@@ -1,0 +1,21 @@
+bom dia:guten Tag
+ter:haben
+o documento:Ausweis
+o quarto:Zimmer
+pois não:bitte schön
+queijo:Käse
+o cachorro quente:Hotdog
+o calor:Hitze
+tomar banho:baden
+cuidado:Vorsicht
+a água:Wasser
+frio;fria:kalt
+que nada:überhaupt nicht
+do:von dem
+o mar:Meer
+muito mais fria:sehr viel kälter
+a praia:Strand
+frequentemente:oft
+que calor!:was für eine Hitze!
+eu moro na Alemanha:ich wohne in Deutschland
+beber:trinken

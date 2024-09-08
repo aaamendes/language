@@ -1,2 +1,13 @@
 sou:ich bin
+ser:sein
+você é:Sie sind;du bist
+legal:toll
+um:ein
+o:der
+a:die
+no:im
+o bairro:Stadtteil
+onde:wo
+a cidade:Stadt
+morar:wohnen
 nāo:nein

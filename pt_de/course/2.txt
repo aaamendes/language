@@ -1,0 +1,17 @@
+para onde:wohin
+ir:fahren;gehen
+para:zu
+em que:in welcher;in welchem
+a rua:Straße
+também:auch
+juntos;juntas:zusammen
+com prazer:mit Vergnügen
+vou:ich gehe;ich fahre
+sozinho;sozinha:allein
+com:mit
+ela:sie
+ganhar:verdienen
+bem:gut
+mais:mehr
+ou:oder
+menos:weniger
