@@ -14,7 +14,9 @@ my @files;
 
 # TMTOWTDI
 foreach my $fdir (@fdirs) {
-    my @temp = map { &{ sub { s/\n//; +$_; } } } `find $fdir -type f -name *txt`;
+    my @temp = map { 
+        &{ sub { s/\n//; +$_; } } 
+    } `find $fdir -type f -name *txt` or die $!;
     push @files, @temp;
 }
 
