@@ -8,8 +8,11 @@ use Data::Dumper;
 
 my %vocabulary;
 
-my $args = (join $", @ARGV) || ".";
+
+my $args = (join $", @ARGV) || ".";   # neither options nor directories passed.
 my @fdirs = split $", $args;
+my %opts = get_opts(\@fdirs);
+
 my @files;
 
 # TMTOWTDI
@@ -47,7 +50,12 @@ while (1) {
     }
     else {
         print color('bold red');
-        say "A: " . $voc_s_arr[$r][1]{translation};
+        if ($opts{r}) {
+            say "A: ". $voc_s_arr[$r][0];
+        }
+        else {
+            say "A: " . $voc_s_arr[$r][1]{translation};
+        }
         print color('bold magenta');
         say "F: " . $voc_s_arr[$r][1]{file};
     }
@@ -60,9 +68,16 @@ while (1) {
 sub ask {
     my $r = int rand scalar @voc_s_arr;
 
-    print "Q: German translation for ";
+    print "Q: Translation for ";
     print color('bold green');
-    print $voc_s_arr[$r][0];
+
+    if ($opts{r}) {
+        ask_reversed($r);
+    }
+    else {
+        ask_normal($r);
+    }
+
     print color('reset');
     say "?";
     print "A: ";
@@ -70,11 +85,45 @@ sub ask {
     $r;
 }
 
+sub ask_normal {
+    my ($r) = @_;
+    print $voc_s_arr[$r][0];
+};
+
+sub ask_reversed {
+    my ($r) = @_;
+    print $voc_s_arr[$r][1]{translation};
+}
+
 sub check_answer {
     my ($answer, $voc_object) = @_;
-    my @possible_answers = split ";" => $$voc_object[1]{translation};
+    my @possible_answers;
+
+    if ($opts{r}) {
+        @possible_answers = split ";" => $$voc_object[0];
+    }
+    else {
+        @possible_answers = split ";" => $$voc_object[1]{translation};
+    }
 
     grep { /^$answer$/i } @possible_answers;
+}
+
+# Get opts without value
+# like -r
+sub get_opts {
+    my ($fdirs_arr_ref) = @_;
+    my @copy = @$fdirs_arr_ref;
+    my %opts = map {
+        &{
+            sub { s/-//; $_ => \1; }
+        }
+    } (grep { /^-.*$/ } @copy);
+
+    @$fdirs_arr_ref = grep { ! /^-.*$/ } @$fdirs_arr_ref;
+    @$fdirs_arr_ref = "." if scalar @$fdirs_arr_ref == 0;
+    
+    +%opts;
 }
 
 __END__
