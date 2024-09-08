@@ -10,4 +10,4 @@ o bairro:Stadtteil
 onde:wo
 a cidade:Stadt
 morar:wohnen
-nāo:nein
+não:nein
