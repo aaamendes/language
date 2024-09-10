@@ -7,12 +7,9 @@ use Term::ANSIColor;
 use Data::Dumper;
 
 my %vocabulary;
-
-
 my $args = (join $", @ARGV) || ".";   # neither options nor directories passed.
 my @fdirs = split $", $args;
 my %opts = get_opts(\@fdirs);
-
 my @files;
 
 # TMTOWTDI
@@ -41,7 +38,22 @@ my @voc_s_arr = map {
 } sort keys %vocabulary;
 
 while (1) {
-    my $r = ask();
+    my $r = int rand scalar @voc_s_arr;
+
+    print "Q: Translation for ";
+    print color('bold green');
+
+    if ($opts{r}) {
+        print $voc_s_arr[$r][1]{translation};
+    }
+    else {
+        print $voc_s_arr[$r][0];
+    }
+
+    print color('reset');
+    say "?";
+    print "A: ";
+
     chomp (my $answer = <STDIN>);
 
     if (check_answer($answer, $voc_s_arr[$r])) {
@@ -65,37 +77,7 @@ while (1) {
     system("clear");
 }
 
-sub ask {
-    my $r = int rand scalar @voc_s_arr;
-
-    print "Q: Translation for ";
-    print color('bold green');
-
-    if ($opts{r}) {
-        ask_reversed($r);
-    }
-    else {
-        ask_normal($r);
-    }
-
-    print color('reset');
-    say "?";
-    print "A: ";
-
-    $r;
-}
-
-sub ask_normal {
-    my ($r) = @_;
-    print $voc_s_arr[$r][0];
-};
-
-sub ask_reversed {
-    my ($r) = @_;
-    print $voc_s_arr[$r][1]{translation};
-}
-
-sub check_answer {
+sub check_answer { # bool
     my ($answer, $voc_object) = @_;
     my @possible_answers;
 
@@ -111,7 +93,7 @@ sub check_answer {
 
 # Get opts without value
 # like -r
-sub get_opts {
+sub get_opts { # hash
     my ($fdirs_arr_ref) = @_;
     my @copy = @$fdirs_arr_ref;
     my %opts = map {
