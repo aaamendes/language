@@ -13,3 +13,6 @@ brawl:Schlägerei
 perpetrator:Täter
 implacable:unerbittlich
 chestnut:Kastanie
+to derail:entgleisen
+to deter:abschrecken;zurückhalten
+resolute:entschlossen
