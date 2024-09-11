@@ -5,3 +5,4 @@ maravilhoso;maravilhosa
 inconstitucionalisticamente:verfassungswidrig
 paralelepípedo:Pflasterstein
 briga:Schlägerei
+vaidade:Eitelkeit
