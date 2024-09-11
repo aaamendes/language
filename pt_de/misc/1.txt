@@ -4,3 +4,4 @@ azul:blau
 maravilhoso;maravilhosa
 inconstitucionalisticamente:verfassungswidrig
 paralelepípedo:Pflasterstein
+briga:Schlägerei
