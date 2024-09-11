@@ -3,3 +3,4 @@ estrala cadente:Sternschnuppe
 azul:blau
 maravilhoso;maravilhosa
 inconstitucionalisticamente:verfassungswidrig
+paralelepípedo:Pflasterstein
